@@ -28,13 +28,22 @@ Console.ReadKey();
 // Method that will display the first menu of the program
 static void Menu()
 {
-    Console.WriteLine("Welcome to Satiate Café!\n\nMain Menu\n");
+    Console.ForegroundColor = ConsoleColor.Cyan;
+    Console.WriteLine("Welcome to Satiate Café!\n");
+    Console.WriteLine("========================");
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine("Main Menu\n");
+    
 
     // loop that is pulling values from the menu enum to display the options
     foreach (MainMenu item in Enum.GetValues(typeof(MainMenu)))
     {
         Console.WriteLine("{0}. {1}", (int)item, item.ToString().Replace("_", " "));
     }
+
+    Console.ForegroundColor = ConsoleColor.Cyan;
+    Console.WriteLine("========================");
+    Console.ForegroundColor = ConsoleColor.White;
 
     string selection = Console.ReadLine();
 
@@ -56,7 +65,7 @@ static void Menu()
         case "5":
             MenuColdDrinks();
             break;
-        case "6:":
+        case "6":
             Checkout();
             break;
         case "7":
@@ -86,7 +95,11 @@ static void MenuBreakfast()
         { Breakfast.Toast_Bacon_Egg, 40.20 },
     };
 
-    Console.WriteLine("\nBreakfast Menu:");
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine("\n===========================================");
+    Console.ForegroundColor = ConsoleColor.White;
+
+    Console.WriteLine("Breakfast Menu:");
 
     // for loop displaying the items that can be purchased along with their price
     foreach (Breakfast item in Enum.GetValues(typeof(Breakfast)))
@@ -95,6 +108,10 @@ static void MenuBreakfast()
         Console.WriteLine("{0}. {1}: R{2}", (int)item, item.ToString().Replace("_", " "), Math.Round(price, 2).ToString("0.00"));
     }
     Console.WriteLine("4. Back");
+
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine("===========================================");
+    Console.ForegroundColor = ConsoleColor.White;
 
     string choice = Console.ReadLine();
     //switchcase to determine what item has been chosen and to begin calculating how many items and the price for for the items, aswell as adding the purchase to the cart
@@ -139,9 +156,11 @@ static void OrderItem(string item, double price) // used to place all the items 
     Item.Add(key, item);
     Quantity.Add(key, quantity);
     Price.Add(key, price);
-    Console.WriteLine("=========================================================");
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine("\n=======================================================");
     Console.WriteLine("{0} of the {1} has been ordered:",quantity,item.Replace("_"," "));
-    Console.WriteLine("");
+    Console.WriteLine("=======================================================\n");
+    Console.ForegroundColor = ConsoleColor.White;
 }
 
 static void MenuBurgers()
@@ -156,7 +175,11 @@ static void MenuBurgers()
         { Burgers.Chicken_Burger, 50.20 },
     };
 
-    Console.WriteLine("\nBurger Menu:");
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine("\n===========================================");
+    Console.ForegroundColor = ConsoleColor.White;
+
+    Console.WriteLine("Burger Menu:");
 
     foreach (Burgers item in Enum.GetValues(typeof(Burgers)))
     {
@@ -164,6 +187,10 @@ static void MenuBurgers()
         Console.WriteLine("{0}. {1}: R{2}", (int)item, item.ToString().Replace("_", " "), Math.Round(price, 2).ToString("0.00"));
     }
     Console.WriteLine("5. Back");
+
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine("===========================================");
+    Console.ForegroundColor = ConsoleColor.White;
 
     string choice = Console.ReadLine();
 
@@ -213,7 +240,11 @@ static void MenuSideExtras()
         { Sides_Extras.Veg_Of_The_Day, 35.50 },
     };
 
-    Console.WriteLine("\nSides/Extras Menu:");
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine("\n===========================================");
+    Console.ForegroundColor = ConsoleColor.White;
+
+    Console.WriteLine("Sides/Extras Menu:");
 
     foreach (Sides_Extras item in Enum.GetValues(typeof(Sides_Extras)))
     {
@@ -221,6 +252,10 @@ static void MenuSideExtras()
         Console.WriteLine("{0}. {1}: R{2}", (int)item, item.ToString().Replace("_", " "), Math.Round(price, 2).ToString("0.00"));
     }
     Console.WriteLine("6. Back");
+
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine("===========================================");
+    Console.ForegroundColor = ConsoleColor.White;
 
     string choice = Console.ReadLine();
 
@@ -275,7 +310,11 @@ static void MenuMilkshakes()
         { Milkshakes.Peanut_butter, 45.50 },
     };
 
-    Console.WriteLine("\nMilkshake Menu:");
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine("\n===========================================");
+    Console.ForegroundColor = ConsoleColor.White;
+
+    Console.WriteLine("Milkshake Menu:");
 
     foreach (Milkshakes item in Enum.GetValues(typeof(Milkshakes)))
     {
@@ -284,21 +323,29 @@ static void MenuMilkshakes()
     }
     Console.WriteLine("5. Back");
 
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine("===========================================");
+    Console.ForegroundColor = ConsoleColor.White;
+
     string choice = Console.ReadLine();
 
     switch (choice)
     {
         case "1":
             OrderItem("Strawberry", 35.90);
+            Menu();
             break;
         case "2":
             OrderItem("Oreo", 45.50);
+            Menu();
             break;
         case "3":
             OrderItem("Chocolate", 35.90);
+            Menu();
             break;
         case "4":
             OrderItem("Peanut_butter", 45.50);
+            Menu();
             break;
         case "5":
             Console.WriteLine("");
@@ -324,7 +371,11 @@ static void MenuColdDrinks()
         { Colddrinks.Water, 10.50}
     };
 
-    Console.WriteLine("\nCold drinks Menu:");
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine("\n===========================================");
+    Console.ForegroundColor = ConsoleColor.White;
+
+    Console.WriteLine("Cold drinks Menu:");
 
     foreach (Colddrinks item in Enum.GetValues(typeof(Colddrinks)))
     {
@@ -332,6 +383,10 @@ static void MenuColdDrinks()
         Console.WriteLine("{0}. {1}: R{2}", (int)item, item.ToString().Replace("_", " "), Math.Round(price, 2).ToString("0.00"));
     }
     Console.WriteLine("6. Back");
+
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine("===========================================");
+    Console.ForegroundColor = ConsoleColor.White;
 
     string choice = Console.ReadLine();
 
@@ -374,9 +429,70 @@ static void MenuColdDrinks()
 
 }
 
+//used to display all items ordered as well as their quantity and price
 static void Checkout()
 {
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine("\n====================");
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine("Welcome to Checkout:");
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine("====================\n");
+    Console.ForegroundColor = ConsoleColor.White; ;
+    double total = 0;
+    Console.WriteLine("Ordered Items:");
 
+    foreach (var item in Item)
+    {
+        int quantity = Quantity[item.Key];
+        double price = Price[item.Key];
+        double itemTotal = quantity * price;
+
+        Console.WriteLine("{0} x {1}: R{2}", quantity, item.Value.Replace("_", " "), itemTotal.ToString("0.00"));
+
+        total += itemTotal;
+    }
+
+    Console.WriteLine("\nTotal Price Due: R{0}", total.ToString("0.00"));
+
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine("\n====================");
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine("1. Back to Main Menu");
+    Console.WriteLine("2. Close Application");
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine("====================");
+    Console.ForegroundColor = ConsoleColor.White;
+    //switch case used to give the user the option to go back to main menu to start over which will clear the cart
+    //user also has the option to close the program
+    string choice = Console.ReadLine();
+
+    switch (choice)
+    {
+        case "1":
+            ResetCart();
+            Menu();
+            break;
+
+        case "2":
+            Thread.Sleep(1500);
+            Console.WriteLine("Thank you for visiting! Please call again!");
+            Thread.Sleep(2000);
+            Environment.Exit(0);
+            break;
+
+        default:
+            Console.WriteLine("");
+            Checkout();
+            break;
+    }
+}
+//this method is used to reset the cart when called
+static void ResetCart()
+{
+    Item.Clear();
+    Quantity.Clear();
+    Price.Clear();
 }
 
 // enums that are used to display menu's
