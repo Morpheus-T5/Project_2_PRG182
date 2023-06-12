@@ -18,19 +18,19 @@ using System.Threading.Tasks;
 
 
 // Dictionary that will store all purchase information, string is the name of the item purchased and double is the price of the item purchase
-Dictionary<string, double> cart = new Dictionary<string, double>();
+
 
 // calling the main menu function that will initiate the program
-Menu(cart);
+Menu();
 
 Console.ReadKey();
 
 // Method that will display the first menu of the program
-static void Menu(Dictionary<string, double> cart)
+static void Menu()
 {
     Console.WriteLine("Welcome to Satiate Café!\n\nMain Menu\n");
 
-    // loop that is puliing values from the menu enum to display the options
+    // loop that is pulling values from the menu enum to display the options
     foreach (MainMenu item in Enum.GetValues(typeof(MainMenu)))
     {
         Console.WriteLine("{0}. {1}", (int)item, item.ToString().Replace("_", " "));
@@ -42,22 +42,22 @@ static void Menu(Dictionary<string, double> cart)
     switch (selection)
     {
         case "1":
-            cart = MenuBreakfast(cart);
+            MenuBreakfast();
             break;
         case "2":
-            cart = MenuBurgers(cart);
+            MenuBurgers();
             break;
         case "3":
-            cart = MenuSideExtras(cart);
+            MenuSideExtras();
             break;
         case "4":
-            cart = MenuMilkshakes(cart);
+            MenuMilkshakes();
             break;
         case "5":
-            cart = MenuColdDrinks(cart);
+            MenuColdDrinks();
             break;
         case "6:":
-            Checkout(cart);
+            Checkout();
             break;
         case "7":
             Thread.Sleep(1500);
@@ -65,8 +65,8 @@ static void Menu(Dictionary<string, double> cart)
             Thread.Sleep(2000);
             System.Environment.Exit(0);
             break;
-        default: // defualt in the case that an non existing option is chosen to redisplay the menu
-            Menu(cart);
+        default: // defualt in the case that a non-existing option is chosen, redisplay the menu
+            Menu();
             Console.WriteLine("");
             break;
     }
@@ -74,7 +74,7 @@ static void Menu(Dictionary<string, double> cart)
 }
 
 // method that will call a submenu for the user to pick a item to purchase
-static Dictionary<string, double> MenuBreakfast(Dictionary<string, double> cart)
+static void MenuBreakfast()
 {
     Dictionary<Breakfast, double> prices;
     // dictionary that stores a key and value, the key being the value of an enuma item, and the value being the corresponding price of that enum item
@@ -101,27 +101,50 @@ static Dictionary<string, double> MenuBreakfast(Dictionary<string, double> cart)
     switch (choice)
     {
         case "1":
-
+            OrderItem("Basic_Omlette_Cheese_Tomato",45.20);
+            Menu();
             break;
+
         case "2":
-
+            OrderItem("Croissant_With_Scrambled_Egg", 50.90);
+            Menu();
             break;
+
         case "3":
-
+            OrderItem("Toast_Bacon_Egg", 40.20);
+            Menu();
             break;
+
         case "4":
             Console.WriteLine("");
-            Menu(cart);
+            Menu();
             break;
+
         default:
-            MenuBreakfast(cart);
+            MenuBreakfast();
             break;
     }
 
-    return cart;
 }
 
-static Dictionary<string, double> MenuBurgers(Dictionary<string, double> cart)
+
+
+static void OrderItem(string item, double price) // used to place all the items ordered in a dictionary
+                                                // that be called to print the menu
+{
+    Console.WriteLine("");
+    Console.WriteLine("How many of the {0} would you like?",item.Replace("_"," "));
+    int quantity = Convert.ToInt32(Console.ReadLine());
+    key++;
+    Item.Add(key, item);
+    Quantity.Add(key, quantity);
+    Price.Add(key, price);
+    Console.WriteLine("=========================================================");
+    Console.WriteLine("{0} of the {1} has been ordered:",quantity,item.Replace("_"," "));
+    Console.WriteLine("");
+}
+
+static void MenuBurgers()
 {
     Dictionary<Burgers, double> prices;
 
@@ -147,30 +170,37 @@ static Dictionary<string, double> MenuBurgers(Dictionary<string, double> cart)
     switch (choice)
     {
         case "1":
-
+            OrderItem("Classic_Hamburger", 50.20);
+            Menu();
             break;
+
         case "2":
-
+            OrderItem("Cheese_Burger", 55.50);
+            Menu();
             break;
+
         case "3":
-
+            OrderItem("Bacon_Burger", 60.60);
+            Menu();
             break;
+
         case "4":
-
+            OrderItem("Chicken_Burger", 50.20);
+            Menu();
             break;
+
         case "5":
             Console.WriteLine("");
-            Menu(cart);
+            Menu();
             break;
         default:
-            MenuBurgers(cart);
+            MenuBurgers();
             break;
     }
 
-    return cart;
 }
 
-static Dictionary<string, double> MenuSideExtras(Dictionary<string, double> cart)
+static void MenuSideExtras()
 {
     Dictionary<Sides_Extras, double> prices;
 
@@ -197,33 +227,43 @@ static Dictionary<string, double> MenuSideExtras(Dictionary<string, double> cart
     switch (choice)
     {
         case "1":
-
+            OrderItem("Small_Fries", 15.50);
+            Menu();
             break;
+
         case "2":
-
+            OrderItem("Medium_Fries", 20.90);
+            Menu();
             break;
+
         case "3":
-
+            OrderItem("Large_Fries", 30.90);
+            Menu();
             break;
+
         case "4":
-
+            OrderItem("Greek_Salad", 35.50);
+            Menu();
             break;
+
         case "5":
-
+            OrderItem("Veg_Of_The_Day", 35.50);
+            Menu();
             break;
+
         case "6":
             Console.WriteLine("");
-            Menu(cart);
+            Menu();
             break;
+
         default:
-            MenuSideExtras(cart);
+            MenuSideExtras();
             break;
     }
 
-    return cart;
 }
 
-static Dictionary<string, double> MenuMilkshakes(Dictionary<string, double> cart)
+static void MenuMilkshakes()
 {
     Dictionary<Milkshakes, double> prices;
 
@@ -249,30 +289,29 @@ static Dictionary<string, double> MenuMilkshakes(Dictionary<string, double> cart
     switch (choice)
     {
         case "1":
-
+            OrderItem("Strawberry", 35.90);
             break;
         case "2":
-
+            OrderItem("Oreo", 45.50);
             break;
         case "3":
-
+            OrderItem("Chocolate", 35.90);
             break;
         case "4":
-
+            OrderItem("Peanut_butter", 45.50);
             break;
         case "5":
             Console.WriteLine("");
-            Menu(cart);
+            Menu();
             break;
         default:
-            MenuMilkshakes(cart);
+            MenuMilkshakes();
             break;
     }
 
-    return cart;
 }
 
-static Dictionary<string, double> MenuColdDrinks(Dictionary<string, double> cart)
+static void MenuColdDrinks()
 {
     Dictionary<Colddrinks, double> prices;
 
@@ -299,33 +338,43 @@ static Dictionary<string, double> MenuColdDrinks(Dictionary<string, double> cart
     switch (choice)
     {
         case "1":
-
+            OrderItem("Coke", 15.50);
+            Menu();
             break;
+
         case "2":
-
+            OrderItem("Fanta", 15.50);
+            Menu();
             break;
+
         case "3":
-
+            OrderItem("Apple_Juice", 12.90);
+            Menu();
             break;
+
         case "4":
-
+            OrderItem("Sprite", 15.50);
+            Menu();
             break;
+
         case "5":
-
+            OrderItem("Water", 10.50);
+            Menu();
             break;
+
         case "6":
             Console.WriteLine("");
-            Menu(cart);
+            Menu();
             break;
+
         default:
-            MenuColdDrinks(cart);
+            MenuColdDrinks();
             break;
     }
 
-    return cart;
 }
 
-static void Checkout(Dictionary<string, double> cart)
+static void Checkout()
 {
 
 }
@@ -380,4 +429,13 @@ public enum Colddrinks
     Apple_Juice,
     Sprite,
     Water
+}
+
+public partial class Program
+{
+    static int key = 0;//will be used as a unique identifier for all the dictionaries
+    static Dictionary<int, string> Item = new Dictionary<int, string>();// used to store each item which was selected
+    static Dictionary<int, int> Quantity = new Dictionary<int, int>();// used to store the amount of said item
+    static Dictionary<int, double> Price = new Dictionary<int, double>();//used to store the price of one of the items
+
 }
