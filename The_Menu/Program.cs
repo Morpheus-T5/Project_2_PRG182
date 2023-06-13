@@ -488,6 +488,7 @@ static void Checkout()
 //this method is used to reset the cart when called
 static void ResetCart()
 {
+    key = 0;
     Item.Clear();
     Quantity.Clear();
     Price.Clear();
