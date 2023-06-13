@@ -72,7 +72,7 @@ static void Menu()
             Thread.Sleep(1500);
             Console.WriteLine("Thank you for visiting! Please call again!");
             Thread.Sleep(2000);
-            System.Environment.Exit(0);
+            Environment.Exit(0);
             break;
         default: // defualt in the case that a non-existing option is chosen, redisplay the menu
             Menu();
@@ -142,25 +142,6 @@ static void MenuBreakfast()
             break;
     }
 
-}
-
-
-
-static void OrderItem(string item, double price) // used to place all the items ordered in a dictionary
-                                                // that be called to print the menu
-{
-    Console.WriteLine("");
-    Console.WriteLine("How many of the {0} would you like?",item.Replace("_"," "));
-    int quantity = Convert.ToInt32(Console.ReadLine());
-    key++;
-    Item.Add(key, item);
-    Quantity.Add(key, quantity);
-    Price.Add(key, price);
-    Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine("\n=======================================================");
-    Console.WriteLine("{0} of the {1} has been ordered:",quantity,item.Replace("_"," "));
-    Console.WriteLine("=======================================================\n");
-    Console.ForegroundColor = ConsoleColor.White;
 }
 
 static void MenuBurgers()
@@ -427,6 +408,23 @@ static void MenuColdDrinks()
             break;
     }
 
+}
+
+static void OrderItem(string item, double price) // used to place all the items ordered in a dictionary
+                                                 // that be called to print the menu
+{
+    Console.WriteLine("");
+    Console.WriteLine("How many of the {0} would you like?", item.Replace("_", " "));
+    int quantity = Convert.ToInt32(Console.ReadLine());
+    key++;
+    Item.Add(key, item);
+    Quantity.Add(key, quantity);
+    Price.Add(key, price);
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine("\n=======================================================");
+    Console.WriteLine("{0} of the {1} has been ordered:", quantity, item.Replace("_", " "));
+    Console.WriteLine("=======================================================\n");
+    Console.ForegroundColor = ConsoleColor.White;
 }
 
 //used to display all items ordered as well as their quantity and price
